@@ -2,7 +2,6 @@ import { View, Text, StyleSheet, Button, ActivityIndicator } from 'react-native'
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
 
-// Interfaz rápida para saber qué esperamos
 interface Tarea {
   id: number;
   title: string;
@@ -11,7 +10,7 @@ interface Tarea {
 }
 
 export default function DetallesScreen() {
-  const { id } = useLocalSearchParams(); // Atrapamos el ID que viene en la ruta
+  const { id } = useLocalSearchParams(); 
   const router = useRouter();
   const [tarea, setTarea] = useState<Tarea | null>(null);
 
@@ -34,7 +33,6 @@ export default function DetallesScreen() {
     }
   };
 
-  // Mientras carga la info, mostramos un círculo de carga
   if (!tarea) {
     return (
       <View style={[styles.container, { justifyContent: 'center' }]}>

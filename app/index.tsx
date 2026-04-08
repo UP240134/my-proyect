@@ -86,12 +86,9 @@ export default function Index() {
         // Extraemos la tarea de la propiedad .data
         const tarea = jsonResponse.data;
         
-        // Formateamos los datos para mostrarlos
         const estado = tarea.completed ? "✅ Completada" : "⏳ Pendiente";
-        // Nota: Si tu base de datos no tiene columna "description", mostrará "No especificada"
         const descripcion = tarea.description ? tarea.description : "No especificada";
 
-        // Mostramos el detalle en un Alert
         Alert.alert(
           "Detalles de la Tarea",
           `Nombre: ${tarea.title}\nDescripción: ${descripcion}\nEstado: ${estado}`
@@ -105,7 +102,6 @@ export default function Index() {
   };
 
   const deleteTarea = async (id: number) => {
-    // Definimos la URL exacta para evitar errores de rutas incompletas
     const urlExacta = `http://10.0.2.2:3000/todos/${id}`;
 
     try {
@@ -116,12 +112,10 @@ export default function Index() {
       const jsonResponse = await response.json();
 
       if (response.ok) {
-        // Si la API confirma que se borró, la quitamos de la lista visual
         setTareas(tareas.filter(tarea => tarea.id !== id));
         console.log(`Tarea con id ${id} borrada exitosamente.`);
         Alert.alert('Éxito', 'Tarea borrada correctamente ');
       } else {
-        // Si el backend rechaza la petición, esta alerta nos dirá el motivo exacto
         console.log("Error del servidor al borrar:", jsonResponse);
         Alert.alert('Rechazado por la API', JSON.stringify(jsonResponse));
       }
@@ -137,7 +131,6 @@ export default function Index() {
       
       if (response.ok) {
         const jsonResponse = await response.json();
-        // Actualizamos solo la tarea modificada en nuestra lista visual
         setTareas(tareas.map(tarea => 
           tarea.id === id ? jsonResponse.data : tarea
         ));
@@ -163,7 +156,6 @@ export default function Index() {
           tarea.id === id ? jsonResponse.data : tarea
         ));
       } else {
-        // Si falla, mostramos el mensaje exacto que manda Node.js
         console.log("Error al hacer toggle:", jsonResponse);
         Alert.alert('Rechazado por la API', JSON.stringify(jsonResponse));
       }

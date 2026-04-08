@@ -24,7 +24,6 @@ export default function EditarScreen() {
       
       if (response.ok) {
         const tarea = jsonResponse.data;
-        // Llenamos las cajas de texto con la info de la base de datos
         setTitulo(tarea.title);
         setDescripcion(tarea.description ? tarea.description : '');
         setCompletada(tarea.completed);
@@ -50,7 +49,7 @@ export default function EditarScreen() {
         body: JSON.stringify({ 
           title: titulo, 
           description: descripcion,
-          completed: completada // Mandamos el mismo estado que ya tenía
+          completed: completada 
         }) 
       });
 
@@ -92,7 +91,7 @@ export default function EditarScreen() {
           style={[styles.input, { height: 80, textAlignVertical: 'top' }]}
           value={descripcion}
           onChangeText={setDescripcion}
-          multiline={true} // Permite escribir varios renglones
+          multiline={true}
         />
 
         <View style={{ marginTop: 20, gap: 10 }}>
