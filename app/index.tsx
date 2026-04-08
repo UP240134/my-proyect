@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback , } from 'react';
+import { useState, useCallback , } from 'react';
 import { View, Text, TextInput, Button, FlatList, Alert, StyleSheet, TouchableOpacity } from 'react-native';
 import { useRouter , useFocusEffect } from 'expo-router';
 
@@ -82,7 +82,6 @@ export default function Index() {
       const jsonResponse = await response.json();
 
       if (response.ok) {
-        // Extraemos la tarea de la propiedad .data
         const tarea = jsonResponse.data;
         
         const estado = tarea.completed ? "✅ Completada" : "⏳ Pendiente";
