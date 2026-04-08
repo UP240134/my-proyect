@@ -63,7 +63,7 @@ export default function Index() {
       if (response.ok) {
         setTareas([...tareas, jsonResponse.data]);
         setNuevaTarea(''); 
-        setNuevaDescripcion(''); // <-- LIMPIAMOS EL CAMPO
+        setNuevaDescripcion(''); 
       } else {
         Alert.alert('Error', 'No se pudo crear la tarea');
       }
@@ -121,7 +121,10 @@ export default function Index() {
       Alert.alert('Error de red', `No se pudo conectar: ${(error as Error).message}`);
     }
 
-    const toggleTarea = async (id: number) => {
+  
+  };
+
+  const toggleTarea = async (id: number) => {
     try {
       const response = await fetch(`http://10.0.2.2:3000/todos/${id}/toggle`, {
         method: "PATCH"
@@ -134,28 +137,6 @@ export default function Index() {
         ));
       } else {
         Alert.alert('Error', 'No se pudo cambiar el estado de la tarea');
-      }
-    } catch (error) {
-      Alert.alert('Error de red', `No se pudo conectar: ${(error as Error).message}`);
-    }
-  };
-  };
-
-  const toggleTarea = async (id: number) => {
-    try {
-      const response = await fetch(`http://10.0.2.2:3000/todos/${id}/toggle`, {
-        method: "PATCH"
-      });
-      
-      const jsonResponse = await response.json(); // Leemos qué nos contestó la API
-
-      if (response.ok) {
-        setTareas(tareas.map(tarea => 
-          tarea.id === id ? jsonResponse.data : tarea
-        ));
-      } else {
-        console.log("Error al hacer toggle:", jsonResponse);
-        Alert.alert('Rechazado por la API', JSON.stringify(jsonResponse));
       }
     } catch (error) {
       Alert.alert('Error de red', `No se pudo conectar: ${(error as Error).message}`);
