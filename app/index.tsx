@@ -34,7 +34,6 @@ export default function Index() {
     
       if (response.ok) {
         const jsonResponse = await response.json();
-        // ¡OJO AQUÍ! Es jsonResponse.data, no solo jsonResponse
         setTareas(jsonResponse.data); 
       } else {
         throw new Error(`Error no se pudieron obtener las tareas`);
