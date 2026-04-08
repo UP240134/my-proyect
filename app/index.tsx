@@ -54,7 +54,7 @@ export default function Index() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ 
           title: nuevaTarea, 
-          description: nuevaDescripcion // <-- AHORA MANDAMOS LA DESCRIPCIÓN
+          description: nuevaDescripcion
         }) 
       });
       
