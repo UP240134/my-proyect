@@ -52,12 +52,10 @@ export default function DetallesScreen() {
         <Text style={styles.label}>Nombre:</Text>
         <Text style={styles.value}>{tarea.title}</Text>
 
-        {/* --- ESTO ES LO QUE AGREGAMOS --- */}
         <Text style={styles.label}>Descripción:</Text>
         <Text style={styles.value}>
           {tarea.description ? tarea.description : "No especificada"}
         </Text>
-        {/* -------------------------------- */}
 
         <Text style={styles.label}>Estado:</Text>
         <Text style={styles.value}>{tarea.completed ? "✅ Completada" : "⏳ Pendiente"}</Text>

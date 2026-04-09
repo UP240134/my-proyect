@@ -6,13 +6,11 @@ export default function EditarScreen() {
   const { id } = useLocalSearchParams();
   const router = useRouter();
   
-  // Estados para guardar lo que el usuario escribe
   const [titulo, setTitulo] = useState('');
   const [descripcion, setDescripcion] = useState('');
   const [completada, setCompletada] = useState(false);
   const [cargando, setCargando] = useState(true);
 
-  // Al abrir la pantalla, buscamos los datos actuales de la tarea
   useEffect(() => {
     getTareaActual();
   }, [id]);
@@ -55,7 +53,7 @@ export default function EditarScreen() {
 
       if (response.ok) {
         Alert.alert("Éxito", "Tarea actualizada correctamente", [
-          { text: "OK", onPress: () => router.back() } // Regresamos a la lista
+          { text: "OK", onPress: () => router.back() }
         ]);
       } else {
         const err = await response.json();

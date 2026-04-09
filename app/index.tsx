@@ -14,7 +14,7 @@ interface Tareas {
 export default function Index() {
   const [tareas, setTareas] = useState<Tareas[]>([]);
   const [nuevaTarea, setNuevaTarea] = useState('');
-  const [nuevaDescripcion, setNuevaDescripcion] = useState(''); // <-- NUEVO ESTADO
+  const [nuevaDescripcion, setNuevaDescripcion] = useState(''); 
   
 
   const API_URL = "http://10.0.2.2:3000"; 
@@ -71,33 +71,7 @@ export default function Index() {
       Alert.alert('Error de red', `No se pudo conectar: ${(error as Error).message}`);
     }
   };
-  const getTareaById = async (id: number) => {
-    const urlExacta = `http://10.0.2.2:3000/todos/${id}`;
-
-    try {
-      const response = await fetch(urlExacta, {
-        method: "GET"
-      });
-      
-      const jsonResponse = await response.json();
-
-      if (response.ok) {
-        const tarea = jsonResponse.data;
-        
-        const estado = tarea.completed ? "✅ Completada" : "⏳ Pendiente";
-        const descripcion = tarea.description ? tarea.description : "No especificada";
-
-        Alert.alert(
-          "Detalles de la Tarea",
-          `Nombre: ${tarea.title}\nDescripción: ${descripcion}\nEstado: ${estado}`
-        );
-      } else {
-        Alert.alert('Error', 'No se pudo obtener la tarea');
-      }
-    } catch (error) {
-      Alert.alert('Error de red', `No se pudo conectar:${(error as Error).message}`);
-    }
-  };
+  
 
   const deleteTarea = async (id: number) => {
     const urlExacta = `http://10.0.2.2:3000/todos/${id}`;
@@ -198,7 +172,7 @@ export default function Index() {
             <View style={{ flexDirection: 'row', gap: 10 }}>
               <Button 
                 title="EDITAR" 
-                color="#f59e0b" // Un color naranja/amarillo
+                color="#f59e0b"
                 onPress={() => router.push(`/editar?id=${item.id}`)} 
               />
               
